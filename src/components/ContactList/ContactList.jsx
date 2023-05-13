@@ -3,16 +3,18 @@ import ContactItem from 'components/ContactItem/ContactItem';
 import { Contacts } from './ContactList.styled';
 
 const ContactList = ({ contacts, onDelete }) => {
+  const contactsArray = Array.isArray(contacts) ? contacts : [];
+
   return (
     <Contacts>
-      <ContactItem contacts={contacts} onDelete={onDelete} />
+      <ContactItem contacts={contactsArray} onDelete={onDelete} />
     </Contacts>
   );
 };
 
 export default ContactList;
 
-ContactItem.propTypes = {
-  contacts: PropTypes.array.isRequired,
+ContactList.propTypes = {
+  contacts: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   onDelete: PropTypes.func.isRequired,
 };

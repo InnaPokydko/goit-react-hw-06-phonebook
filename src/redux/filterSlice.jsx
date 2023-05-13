@@ -4,7 +4,7 @@ import Filter from "components/Filter/Filter";
 const filtersInitialState = {
   status: Filter.all,
 };
-const filtersSlice = createSlice({
+ export const filtersSlice = createSlice({
   name: "filters",
   initialState: filtersInitialState,
   reducers: {

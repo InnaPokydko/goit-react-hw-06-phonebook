@@ -15,24 +15,3 @@ Filter.propeTypes = {
 };
 
 
-// export class Filter extends Component {
-//   state = {
-//     filter: '',
-//   };
-
-//   render() {
-//     const { name } = this.state;
-//     return (
-//       <div>
-//         <Filter
-//           onChange={e => this.setState({ filter: e.target.value })}
-//           value={this.state.filter}
-//         />
-//       </div>
-//     );
-//   }
-// }
-
-// function Filter({ onChange }) {
-//   return <input type="text" onChange={onChange} value={value} />;
-// }

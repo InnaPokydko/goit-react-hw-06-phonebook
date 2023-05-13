@@ -45,26 +45,16 @@ export const BtnForm = styled.button`
   // height: 50px;
   width: 150px;
   align-self: center;
-  color: #000;
+  color: #fff;
   text-transform: capitalize;
   border: none;
   border-radius: 10px;
-  background-image: linear-gradient(
-    to right,
-    #348f50 0%,
-    #56b4d3 51%,
-    #348f50 100%
-  );
+  background-color: #0072ff;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 4px 4px 6px 0px rgba(66, 68, 90, 1);
 
   &:hover {
-    background-image: linear-gradient(
-      to right,
-      #1d976c 0%,
-      #93f9b9 51%,
-      #1d976c 100%
-    );
+    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
   }
 `;

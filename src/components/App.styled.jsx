@@ -8,11 +8,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 35px;
   padding: 50px;
-  background-image: linear-gradient(
-    109.6deg,
-    rgba(61, 131, 97, 1) 11.2%,
-    rgba(28, 103, 88, 1) 91.1%
-  );
+  background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
 `;
 
 export const Title = styled.h1`

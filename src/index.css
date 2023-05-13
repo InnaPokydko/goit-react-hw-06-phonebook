@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(https://www.wallpapertip.com/wmimgs/80-807379_blur-background.jpg);
+  background-image: url( https://img.freepik.com/vecteurs-libre/fond-geometrique-degrade_23-2149337509.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -30,3 +30,6 @@ ul {
   padding: 0;
   list-style: none;
  }
+
+ /* background-image: url(https://img.freepik.com/premium-photo/3d-social-media-account-management-background-rendered_18199-179.jpg); */
+ 

@@ -9,11 +9,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { filtersSlice } from './filterSlice';
-import { contactReducer } from './contactListSlice';
+import { contactsReducer } from './contactListSlice';
 
 export const store = configureStore({
   reducer: {
-    contacts: contactReducer,
+    contacts: contactsReducer,
     filter: filtersSlice.reducer,
   },
   middleware: getDefaultMiddleware =>

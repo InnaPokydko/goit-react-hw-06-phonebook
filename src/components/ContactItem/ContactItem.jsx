@@ -2,24 +2,26 @@ import PropTypes from 'prop-types';
 import { ContactStyle, BtnDelete } from './ContactItem.styled';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
-const ContactItem = ({ contacts, onDelete }) => {
-  return contacts.map(({ id, name, number }) => {
-    return (
-      <ContactStyle key={id}>
-        {name}: {number}
-        <BtnDelete type="button" onClick={() => onDelete(id, name)}>
-          <RiDeleteBin6Line
-            style={{ width: '16px', height: '16px', fill: 'white' }}
-          />
-        </BtnDelete>
-      </ContactStyle>
-    );
-  });
+const ContactItem = ({ contact, onDelete }) => {
+  const { id, name, number } = contact;
+
+  return (
+    <ContactStyle>
+      {name}: {number}
+      <BtnDelete type="button" onClick={() => onDelete(id)}>
+        <RiDeleteBin6Line style={{ width: '16px', height: '16px', fill: 'white' }} />
+      </BtnDelete>
+    </ContactStyle>
+  );
 };
 
 export default ContactItem;
 
 ContactItem.propTypes = {
-  contacts: PropTypes.array.isRequired,
+  contact: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
   onDelete: PropTypes.func.isRequired,
 };

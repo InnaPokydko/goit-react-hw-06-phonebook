@@ -21,7 +21,7 @@ const contactSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const index = state.contacts.findIndex(
+      const index = state.contactsArr.findIndex(
         contact => contact.id === action.payload
       );
       if (index !== -1) {
@@ -37,7 +37,7 @@ const persistConfig = {
   whitelist: ['contactsArr'],
 };
 
-const contactsReducer = persistReducer(persistConfig, contactSlice.reducer);
+export const contactsReducer = persistReducer(persistConfig, contactSlice.reducer);
 
 export const { addContact, deleteContact } = contactSlice.actions;
-export const contactReducer = contactsReducer;
+ 

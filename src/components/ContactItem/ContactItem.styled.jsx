@@ -14,11 +14,12 @@ color: #000;
 text-transform: capitalize;
 border: none;
 border-radius: 14px;
-background-image: linear-gradient(to right, #348F50 50%, #348F50 100%);
+background-color: #DD2476;
 font-size: 10px;
 cursor: pointer;
 box-shadow: 4px 4px 6px 0px rgba(66, 68, 90, 1);
 
 &:hover {
-  background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%);
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
+}
 }`

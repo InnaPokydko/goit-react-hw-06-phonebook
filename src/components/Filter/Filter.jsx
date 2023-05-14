@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setStatusFilter } from "redux/filtersSlice";
-import PropTypes from 'prop-types';
 import { Input } from './Filter.styled';
 
 const Filter = () => {
@@ -25,7 +24,3 @@ const Filter = () => {
 
 export default Filter;
 
-Filter.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-};

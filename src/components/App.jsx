@@ -5,11 +5,11 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { Container, Title, SecondTitle } from './App.styled';
 import { addContact, deleteContact } from 'redux/contactListSlice';
-import { setStatusFilter } from 'redux/filterSlice';
+import { setStatusFilter } from 'redux/filtersSlice';
 
 export default function App() {
   const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter.status);
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const addContactHandler = ({ name, number }) => {

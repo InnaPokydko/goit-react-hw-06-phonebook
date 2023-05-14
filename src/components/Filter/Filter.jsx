@@ -7,7 +7,7 @@ const Filter = () => {
   const filter = useSelector(state => state.filter.status);
   
   const handleChange = event => {
-    dispatch(setStatusFilter(event.target.value));
+    dispatch(setStatusFilter(event.currentTarget.value));
   };
 
   return (
@@ -15,7 +15,7 @@ const Filter = () => {
       <Input
         type="text"
         placeholder="Please enter name"
-        value={filter || ''}
+        value={filter}
         onChange={handleChange}
       />
     </label>

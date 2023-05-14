@@ -8,8 +8,8 @@ import { addContact, deleteContact } from 'redux/contactListSlice';
 import { setStatusFilter } from 'redux/filtersSlice';
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(state => state.contacts.contactsArr);
+  const filter = useSelector(state => state.filter.status);
   const dispatch = useDispatch();
 
   const addContactHandler = ({ name, number }) => {
@@ -20,29 +20,21 @@ export default function App() {
     dispatch(deleteContact(id));
   };
 
-  const changeFilterHandler = event => {
+   const changeFilterHandler = event => {
     dispatch(setStatusFilter(event.target.value));
   };
 
-  const filterContactList = () => {
-    if (filter === 'completed') {
-      return contacts.filter(contact => contact.completed);
-    } else if (filter === 'active') {
-      return contacts.filter(contact => !contact.completed);
-    }
-    return contacts;
-  };
- 
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <Container>
-      <Title>Phonebook</Title>
-      <ContactForm onSubmit={addContactHandler} />
-      <SecondTitle>Contacts</SecondTitle>
-      <Filter value={filter} onChange={changeFilterHandler} />
-      <ContactList
-        contacts={filterContactList()}
-        onDelete={deleteContactHandler}
-      />
-    </Container>
+    <Title>Phonebook</Title>
+    <ContactForm onSubmit={addContactHandler} />
+    <SecondTitle>Contacts</SecondTitle>
+    <Filter value={filter} onChange={changeFilterHandler} />
+    <ContactList contacts={filteredContacts} onDelete={deleteContactHandler} />
+  </Container>
   );
 }

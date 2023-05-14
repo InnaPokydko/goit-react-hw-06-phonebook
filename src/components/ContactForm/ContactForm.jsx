@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactListSlice';
 import { nanoid } from 'nanoid';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -26,8 +28,10 @@ const initialValues = {
 };
 
 const ContactForm = ({ onSubmit }) => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    onSubmit(values);
+    dispatch(addContact(values));
     resetForm();
   };
 

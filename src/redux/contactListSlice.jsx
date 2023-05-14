@@ -8,14 +8,25 @@ const contactSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.contactsArr.push(action.payload);
+        const { name, number } = action.payload;
+        const isContactExist = state.contactsArr.some(
+          contact => contact.name.toLowerCase() === name.toLowerCase()
+        );
+        if (isContactExist) {
+          alert(`${name} is already in contacts`);
+        } else {
+          state.contactsArr.push({
+            name,
+            number,
+            id: nanoid(),
+          });
+        }
       },
       prepare({ name, number }) {
         return {
           payload: {
             name,
             number,
-            id: nanoid(),
           },
         };
       },
@@ -40,4 +51,3 @@ const persistConfig = {
 export const contactsReducer = persistReducer(persistConfig, contactSlice.reducer);
 
 export const { addContact, deleteContact } = contactSlice.actions;
- 

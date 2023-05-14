@@ -1,13 +1,18 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setStatusFilter } from "redux/filtersSlice";
+import React from 'react';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStatusFilter } from 'redux/filtersSlice';
 import { Input } from './Filter.styled';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.filter.status);
-  
+  const filter = useSelector(state => state.filter.status?.value.toLowerCase());
+  const [inputValue, setInputValue] = useState(filter || '');
+
   const handleChange = event => {
-    dispatch(setStatusFilter(event.currentTarget.value));
+    const value = event.target.value.toLowerCase();
+    setInputValue(value);
+    dispatch(setStatusFilter(value));
   };
 
   return (
@@ -15,7 +20,7 @@ const Filter = () => {
       <Input
         type="text"
         placeholder="Please enter name"
-        value={filter}
+        value={inputValue}
         onChange={handleChange}
       />
     </label>
@@ -23,4 +28,3 @@ const Filter = () => {
 };
 
 export default Filter;
-

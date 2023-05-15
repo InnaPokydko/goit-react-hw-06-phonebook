@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactListSlice';
 import { nanoid } from 'nanoid';
 import { Formik } from 'formik';
@@ -22,16 +22,31 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  id: nanoid(),
   name: '',
   number: '',
 };
 
 const ContactForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.contactsArr);
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(addContact(values));
+    const isContactExist = contacts.some(
+      contact => contact.name.toLowerCase() === values.name.toLowerCase()
+    );
+
+    if (isContactExist) {
+      alert(`${values.name} is already in contacts`);
+      resetForm();
+      return;
+    }
+
+    dispatch(
+      addContact({
+        ...values,
+        id: nanoid(),
+      })
+    );
     resetForm();
   };
 

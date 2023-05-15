@@ -8,25 +8,14 @@ const contactSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        const { name, number } = action.payload;
-        const isContactExist = state.contactsArr.some(
-          contact => contact.name.toLowerCase() === name.toLowerCase()
-        );
-        if (isContactExist) {
-          alert(`${name} is already in contacts`);
-        } else {
-          state.contactsArr.push({
-            name,
-            number,
-            id: nanoid(),
-          });
-        }
+        state.contactsArr.push(action.payload);
       },
       prepare({ name, number }) {
         return {
           payload: {
             name,
             number,
+            id: nanoid(),
           },
         };
       },
